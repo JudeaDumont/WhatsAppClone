@@ -1,13 +1,13 @@
-package org.example.whatsappclone;
+package com.example.whats_app_clone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WhatsAppCloneApplication {
+public class WhatsAppCloneApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WhatsAppCloneApplication.class, args);
+		SpringApplication.run(WhatsAppCloneApiApplication.class, args);
 	}
 
 }
