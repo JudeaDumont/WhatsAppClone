@@ -20,6 +20,9 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "chats")
+@NamedQuery(name = ChatConstants.FIND_CHAT_BY_SENDER_ID, query = "SELECT DISTINCT c FROM Chat C WHERE c.sender.id = :senderId OR c.recipient.id = :senderId ORDER BY createdAt")
+@NamedQuery(name = ChatConstants.FIND_CHAT_BY_SENDER_AND_RECIEVER, query = "SELECT DISTINCT c FROM Chat C WHERE (c.sender.id = :senderId AND c.recipient.id = :recipientId) OR (c.sender.id = :recipientId AND c.recipient.id = :senderId)")
+
 public class Chat extends BaseAuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
