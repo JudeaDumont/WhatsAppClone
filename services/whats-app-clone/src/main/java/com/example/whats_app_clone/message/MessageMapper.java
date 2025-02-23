@@ -27,5 +27,15 @@ public class MessageMapper {
                 .createdAt(message.getCreatedAt())
                 .build();
     }
+
+    public Message fromMultiMediaMesssage(Chat chat, String senderId, String recipientId, MessageType messageType, MessageState messageState, String filePath) {
+        return Message.builder()
+                .state(messageState)
+                .senderID(senderId)
+                .recipientID(recipientId)
+                .type(messageType)
+                .mediaFilePath(filePath)
+                .build();
+    }
 }
 
