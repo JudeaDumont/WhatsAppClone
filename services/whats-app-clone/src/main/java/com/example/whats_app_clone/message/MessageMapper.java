@@ -15,5 +15,17 @@ public class MessageMapper {
                 .state(MessageState.SENT)
                 .build();
     }
+
+    public MessageResponse toMessageResponse(Message message) {
+        return MessageResponse.builder()
+                .id(message.getId())
+                .content(message.getContent())
+                .senderId(message.getSenderID())
+                .receiverId(message.getRecipientID())
+                .type(message.getType())
+                .state(message.getState())
+                .createdAt(message.getCreatedAt())
+                .build();
+    }
 }
 

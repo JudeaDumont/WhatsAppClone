@@ -6,6 +6,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MessageService {
@@ -15,10 +17,16 @@ public class MessageService {
 
     public void saveMessage(MessageRequest messageRequest) {
         Chat chat = chatRepository.findById(messageRequest.getChatId())
-                        .orElseThrow(()-> new EntityNotFoundException("Chat: " + messageRequest.getChatId() + "not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Chat: " + messageRequest.getChatId() + "not found"));
 
         Message message = messageMapper.fromMessageRequest(messageRequest, chat);
 
         messageRepository.save(message);
+    }
+
+    public List<MessageResponse> getAllMessages(String chatId) {
+        return messageRepository.findMessagesByChatId(chatId)
+                .stream()
+                .map(messageMapper::toMessageResponse).toList();
     }
 }
