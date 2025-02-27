@@ -1,6 +1,7 @@
 package com.example.whats_app_clone.message;
 
 import com.example.whats_app_clone.chat.Chat;
+import com.example.whats_app_clone.file.FileUtil;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +26,7 @@ public class MessageMapper {
                 .type(message.getType())
                 .state(message.getState())
                 .createdAt(message.getCreatedAt())
+                .media(FileUtil.readFile(message.getMediaFilePath()))
                 .build();
     }
 

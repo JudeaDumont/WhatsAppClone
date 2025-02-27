@@ -1,6 +1,7 @@
 package com.example.whats_app_clone.Interceptor;
 
 import com.example.whats_app_clone.user.User;
+import com.example.whats_app_clone.user.UserResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -28,5 +29,15 @@ public class UserMapper {
 
         return null;
 
+    }
+
+    public UserResponse toUserResponse(User user) {
+        return UserResponse.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .lastSeen(user.getLastSeen())
+                .email(user.getEmail())
+                .isOnline(user.isUserOnline())
+                .build();
     }
 }
